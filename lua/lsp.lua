@@ -10,7 +10,6 @@ require('mason-lspconfig').setup({
 
   ensure_installed = {
 	"clangd",
-	"gopls",
   },
   handlers = {
     lsp_zero.default_setup,
