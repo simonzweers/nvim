@@ -11,6 +11,7 @@ require('mason-lspconfig').setup({
   ensure_installed = {
 	"clangd",
 	"cmake",
+	"clang-format",
   },
   handlers = {
     lsp_zero.default_setup,
