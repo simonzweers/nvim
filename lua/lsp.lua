@@ -10,6 +10,7 @@ require('mason-lspconfig').setup({
 
   ensure_installed = {
 	"clangd",
+	"cmake",
   },
   handlers = {
     lsp_zero.default_setup,
