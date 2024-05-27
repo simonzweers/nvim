@@ -1,25 +1,6 @@
 local lsp_zero = require('lsp-zero')
-lsp_zero.on_attach(function(client, bufnr)
-	lsp_zero.default_keymaps({buffer = bufnr})
-end)
 
--- to learn how to use mason.nvim with lsp-zero
--- read this: https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guides/integrate-with-mason-nvim.md
-require('mason').setup({})
-require('mason-lspconfig').setup({
-
-  ensure_installed = {
-	"clangd",
-	"cmake",
-  },
-  handlers = {
-    lsp_zero.default_setup,
-    lua_ls = function()
-      local lua_opts = lsp_zero.nvim_lua_ls()
-      require('lspconfig').lua_ls.setup(lua_opts)
-    end,
-  }
-})
+lsp_zero.preset("recommended")
 
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
@@ -42,4 +23,23 @@ cmp.setup({
 		['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
 		['<CR>'] = cmp.mapping.confirm(),
 	}),
+})
+
+lsp_zero.on_attach(function(client, bufnr)
+	print('lsp on_attach')
+	local opts = {buffer = bufnr, remap = false}
+
+	vim.keymap.set("n", "<leader>gd", function() vim.lsp.buf.definition() end, opts)
+	vim.keymap.set("n", "<leader>h", function() vim.lsp.buf.signature_help() end, opts)
+end)
+
+lsp_zero.setup()
+
+require('mason').setup({})
+require('mason-lspconfig').setup({
+  handlers = {
+    function(server_name)
+      require('lspconfig')[server_name].setup({})
+    end,
+  },
 })
