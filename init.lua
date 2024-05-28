@@ -3,8 +3,8 @@ local identwidth = 4
 vim.g.mapleader = ' '
 -- vim.keymap.set('n', '<leader>f', ':Files<CR>', {})
 -- vim.keymap.set('n', '<leader>gf', ':GFiles<CR>', {})
-vim.keymap.set('n', '<leader>e', ':Ex<CR>', {})
-vim.keymap.set('n', '<C-s>', ':wa<CR>', {})
+vim.keymap.set('n', '<leader>e', vim.cmd.Ex, {})
+vim.keymap.set('n', '<C-s>', vim.cmd.wa, {})
 vim.opt.autoindent = true
 vim.opt.tabstop = identwidth
 vim.opt.softtabstop = identwidth
