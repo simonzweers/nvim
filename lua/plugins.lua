@@ -18,7 +18,7 @@ require("lazy").setup({
 	{
 		"junegunn/fzf.vim",
 		keys = {
-			{"<leader>f", ":Files<CR>"},
+			{"<leader>ff", ":Files<CR>"},
 			{"<leader>gf", ":GFiles<CR>"},
 			{"<leader>fs", ":GFiles?<CR>"},
 			{"<leader>rg", ":RG<CR>"}
