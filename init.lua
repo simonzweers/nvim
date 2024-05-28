@@ -4,6 +4,7 @@ vim.g.mapleader = ' '
 -- vim.keymap.set('n', '<leader>f', ':Files<CR>', {})
 -- vim.keymap.set('n', '<leader>gf', ':GFiles<CR>', {})
 vim.keymap.set('n', '<leader>e', ':Ex<CR>', {})
+vim.keymap.set('n', '<C-s>', ':wa<CR>', {})
 vim.opt.autoindent = true
 vim.opt.tabstop = identwidth
 vim.opt.softtabstop = identwidth
