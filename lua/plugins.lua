@@ -35,6 +35,8 @@ require("lazy").setup({
 		cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" }
 	},
 
+	"lewis6991/gitsigns.nvim",
+
 	-- LSP bs
 	{'williamboman/mason.nvim'},
 	{'williamboman/mason-lspconfig.nvim'},
