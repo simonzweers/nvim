@@ -1,5 +1,11 @@
 local lsp_zero = require('lsp-zero')
 
+local lspconfig = require('lspconfig')
+lspconfig.clangd.setup({})
+lspconfig.cmake.setup({})
+lspconfig.rust_analyzer.setup({})
+lspconfig.pyright.setup({})
+
 lsp_zero.preset("recommended")
 
 local cmp = require('cmp')
@@ -37,9 +43,12 @@ lsp_zero.setup()
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  handlers = {
-    function(server_name)
-      require('lspconfig')[server_name].setup({})
-    end,
-  },
+	ensure_installed = {
+			
+	},
+	handlers = {
+		function(server_name)
+			require('lspconfig')[server_name].setup({})
+		end,
+	},
 })
