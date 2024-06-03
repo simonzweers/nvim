@@ -16,6 +16,7 @@ require('plugins')
 require('treesitter')
 require('lsp')
 require('git')
+require('formatting')
 
 vim.o.background = "dark" -- or "light" for light mode
 vim.cmd([[colorscheme gruvbox]])

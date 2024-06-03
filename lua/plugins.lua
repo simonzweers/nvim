@@ -36,6 +36,7 @@ require("lazy").setup({
 	},
 
 	"lewis6991/gitsigns.nvim",
+	"mhartington/formatter.nvim",
 
 	-- LSP bs
 	{'williamboman/mason.nvim'},
