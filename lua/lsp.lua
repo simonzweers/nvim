@@ -36,7 +36,7 @@ lsp_zero.on_attach(function(client, bufnr)
 	local opts = {buffer = bufnr, remap = false}
 
 	vim.keymap.set("n", "<leader>gd", function() vim.lsp.buf.definition() end, opts)
-	vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+	vim.keymap.set({"i", "n"}, "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 
 lsp_zero.setup()
