@@ -1,10 +1,17 @@
 local lsp_zero = require('lsp-zero')
 
 local lspconfig = require('lspconfig')
-lspconfig.clangd.setup({})
-lspconfig.cmake.setup({})
-lspconfig.rust_analyzer.setup({})
-lspconfig.pyright.setup({})
+
+require("lsp-format").setup {}
+
+local on_attach = function(client, bufnr)
+    require("lsp-format").on_attach(client, bufnr)
+end
+
+lspconfig.clangd.setup({ on_attach = on_attach })
+lspconfig.cmake.setup({ on_attach = on_attach })
+lspconfig.rust_analyzer.setup({ on_attach = on_attach })
+lspconfig.pyright.setup({ on_attach = on_attach })
 
 lsp_zero.preset("recommended")
 
