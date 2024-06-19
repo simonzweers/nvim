@@ -14,16 +14,11 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	"vim-airline/vim-airline",
 	"neovim/nvim-lspconfig",
-	"junegunn/fzf",
 	{
-		"junegunn/fzf.vim",
-		keys = {
-			{"<leader>ff", ":Files<CR>"},
-			{"<leader>gf", ":GFiles<CR>"},
-			{"<leader>fs", ":GFiles?<CR>"},
-			{"<leader>rg", ":RG<CR>"}
-		}
-	},
+		'nvim-telescope/telescope.nvim',
+		tag = '0.1.6',
+		dependencies = { 'nvim-lua/plenary.nvim' }
+    },
 	{
 		"ellisonleao/gruvbox.nvim",
 		priority = 1000 ,
