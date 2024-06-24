@@ -12,7 +12,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	"vim-airline/vim-airline",
+--	"vim-airline/vim-airline",
 	"neovim/nvim-lspconfig",
 	{
 		'nvim-telescope/telescope.nvim',
@@ -24,6 +24,8 @@ require("lazy").setup({
 		priority = 1000 ,
 		config = true,
 	},
+	"rebelot/kanagawa.nvim",
+	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
