@@ -12,11 +12,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+	{import = "plugins"},
 --	"vim-airline/vim-airline",
-	{
-		'nvim-lualine/lualine.nvim',
-		dependencies = { 'nvim-tree/nvim-web-devicons' }
-	},
+
 	"neovim/nvim-lspconfig",
 	{
 		'nvim-telescope/telescope.nvim',
@@ -36,7 +34,6 @@ require("lazy").setup({
 		cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" }
 	},
 
-	"lewis6991/gitsigns.nvim",
 	"lukas-reineke/lsp-format.nvim",
 	{'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
 

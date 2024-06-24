@@ -12,14 +12,12 @@ vim.opt.shiftwidth = identwidth
 vim.opt.number = true
 vim.opt.relativenumber = true
 
-require('plugins')
+require('config.plugins')
 require('treesitter')
 require('lsp')
-require('git')
 require('formatting')
 require('telescope')
 require('tabline')
-require('lualineconf')
 
 vim.o.background = "dark" -- or "light" for light mode
 -- vim.cmd([[colorscheme gruvbox]])
