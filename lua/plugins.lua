@@ -32,6 +32,7 @@ require("lazy").setup({
 
 	"lewis6991/gitsigns.nvim",
 	"lukas-reineke/lsp-format.nvim",
+	{'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
 
 	-- LSP bs
 	{'williamboman/mason.nvim'},
