@@ -13,7 +13,6 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 require('config.plugins')
-require('treesitter')
 require('lsp')
 require('formatting')
 require('telescope')
