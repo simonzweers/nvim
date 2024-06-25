@@ -17,11 +17,6 @@ require("lazy").setup({
 
 	"neovim/nvim-lspconfig",
 	{
-		'nvim-telescope/telescope.nvim',
-		tag = '0.1.6',
-		dependencies = { 'nvim-lua/plenary.nvim' }
-    },
-	{
 		"ellisonleao/gruvbox.nvim",
 		priority = 1000 ,
 		config = true,
