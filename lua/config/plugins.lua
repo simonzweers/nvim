@@ -16,18 +16,6 @@ require("lazy").setup({
 --	"vim-airline/vim-airline",
 
 	"neovim/nvim-lspconfig",
-	{
-		"ellisonleao/gruvbox.nvim",
-		priority = 1000 ,
-		config = true,
-	},
-	"rebelot/kanagawa.nvim",
-	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-	{
-		"nvim-treesitter/nvim-treesitter",
-		build = ":TSUpdate",
-		cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" }
-	},
 
 	"lukas-reineke/lsp-format.nvim",
 	{'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
