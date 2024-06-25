@@ -15,17 +15,7 @@ require("lazy").setup({
 	{import = "plugins"},
 --	"vim-airline/vim-airline",
 
-	"neovim/nvim-lspconfig",
 
 	"lukas-reineke/lsp-format.nvim",
 	{'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
-
-	-- LSP bs
-	{'williamboman/mason.nvim'},
-	{'williamboman/mason-lspconfig.nvim'},
-	{'VonHeikemen/lsp-zero.nvim', branch = 'v3.x'},
-	{'neovim/nvim-lspconfig'},
-	{'hrsh7th/cmp-nvim-lsp'},
-	{'hrsh7th/nvim-cmp'},
-	{'L3MON4D3/LuaSnip'},
 })
