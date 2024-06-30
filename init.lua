@@ -6,6 +6,7 @@ vim.g.mapleader = ' '
 -- vim.keymap.set('n', '<leader>e', vim.cmd.Ex, {})
 vim.keymap.set('n', '<C-s>', vim.cmd.wa, {})
 vim.keymap.set('n', '<leader>qq', vim.cmd.wqa, {})
+vim.keymap.set('v', '<C-c>', '"+y<CR>', {})
 vim.opt.autoindent = true
 vim.opt.tabstop = identwidth
 vim.opt.softtabstop = identwidth
