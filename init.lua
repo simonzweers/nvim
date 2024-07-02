@@ -15,14 +15,6 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 require('config.plugins')
--- require('lsp')
-require('formatting')
-require('telescope')
-require('tabline')
 
-vim.o.background = "dark" -- or "light" for light mode
--- vim.cmd([[colorscheme gruvbox]])
-vim.cmd("colorscheme kanagawa-dragon")
--- vim.cmd("colorscheme kanagawa-wave")
--- vim.cmd("colorscheme kanagawa-lotus")
--- vim.cmd.colorscheme "catppuccin"
+require('config.theme')
+
