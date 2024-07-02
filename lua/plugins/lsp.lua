@@ -13,7 +13,10 @@ return {
 				vim.keymap.set("n", "<leader>gd", function() vim.lsp.buf.definition() end, opts)
 				vim.keymap.set({"i", "n"}, "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 			end
-			lspconfig.clangd.setup({ on_attach = on_attach })
+			lspconfig.clangd.setup({
+				on_attach = on_attach,
+				cmd = { "clangd", "--completion-style=detailed" } }
+			)
 			lspconfig.cmake.setup({ on_attach = on_attach })
 			lspconfig.rust_analyzer.setup({ on_attach = on_attach })
 			lspconfig.pylsp.setup({ on_attach = on_attach })
@@ -46,6 +49,7 @@ return {
 			require('luasnip.loaders.from_vscode').lazy_load()
 			cmp.setup({
 				sources = {
+					{name = 'nvim_lsp_signature_help' },
 					{name = 'path'},
 					{name = 'nvim_lsp'},
 					{name = 'nvim_lua'},
@@ -55,7 +59,7 @@ return {
 				mapping = cmp.mapping.preset.insert({
 					['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
 					['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-					['<CR>'] = cmp.mapping.confirm(),
+					['<CR>'] = cmp.mapping.confirm({select = true}),
 				}),
 			})
 		end
