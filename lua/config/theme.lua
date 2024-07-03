@@ -2,11 +2,16 @@
 vim.o.background = "dark" -- or "light" for light mode
 
 local themes = {
-	"gruvbox",
+	--"gruvbox",
 	"kanagawa-wave",
 	"kanagawa-dragon",
 	"kanagawa-lotus",
 	"catppuccin",
+	"tokyonight-night",
+	"tokyonight-day",
+	"tokyonight-moon",
+	"onedark",
+	"vscode",
 }
 
 function set_theme() 
