@@ -17,4 +17,5 @@ vim.opt.relativenumber = true
 require('config.plugins')
 
 require('config.theme')
+require('config.autocmds')
 
