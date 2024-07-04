@@ -9,8 +9,13 @@ return {
 				require("lsp-format").on_attach(client, bufnr)
 				print('lsp on_attach')
 				local opts = {buffer = bufnr, remap = false}
-
+				
+				local qfopts = { noremap=true, silent=true }
+				local function quickfix()
+					vim.lsp.buf.code_action()
+				end
 				vim.keymap.set("n", "<leader>gd", function() vim.lsp.buf.definition() end, opts)
+				vim.keymap.set("n", "<leader>qf", quickfix, qfopts)
 				vim.keymap.set({"i", "n"}, "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 			end
 			lspconfig.clangd.setup({
