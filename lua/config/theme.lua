@@ -19,5 +19,7 @@ function set_theme()
 	vim.cmd(string.format('colorscheme %s', themes[index]))
 end
 
+vim.keymap.set('n', '<leader>hihi', set_theme, {})
+
 set_theme()
 
