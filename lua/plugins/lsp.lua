@@ -17,6 +17,14 @@ return {
 				vim.keymap.set("n", "<leader>gd", function() vim.lsp.buf.definition() end, opts)
 				vim.keymap.set("n", "<leader>qf", quickfix, qfopts)
 				vim.keymap.set({"i", "n"}, "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+				if client.server_capabilities.document_highlight then
+					vim.api.nvim_create_autocmd({"CursorMoved"}, {
+						callback = function(ev)
+							vim.lsp.buf.clear_references()
+							vim.lsp.buf.document_highlight()
+						end
+					})
+				end
 			end
 			lspconfig.clangd.setup({
 				on_attach = on_attach,
