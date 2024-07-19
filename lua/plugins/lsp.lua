@@ -17,7 +17,10 @@ return {
 				vim.keymap.set("n", "<leader>gd", function() vim.lsp.buf.definition() end, opts)
 				vim.keymap.set("n", "<leader>qf", quickfix, qfopts)
 				vim.keymap.set({"i", "n"}, "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-				if client.server_capabilities.document_highlight then
+				vim.keymap.set({"n"}, "<leader>rn", function() vim.lsp.buf.rename() end, opts)
+
+				if client.supports_method('textDocument/documentHighlight') then
+					print("Can highlight")
 					vim.api.nvim_create_autocmd({"CursorMoved"}, {
 						callback = function(ev)
 							vim.lsp.buf.clear_references()
