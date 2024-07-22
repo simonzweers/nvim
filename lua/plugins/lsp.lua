@@ -7,7 +7,6 @@ return {
 			require("lsp-format").setup {}
 			local on_attach = function(client, bufnr)
 				require("lsp-format").on_attach(client, bufnr)
-				print('lsp on_attach')
 				local opts = {buffer = bufnr, remap = false}
 				
 				local qfopts = { noremap=true, silent=true }
@@ -20,7 +19,6 @@ return {
 				vim.keymap.set({"n"}, "<leader>rn", function() vim.lsp.buf.rename() end, opts)
 
 				if client.supports_method('textDocument/documentHighlight') then
-					print("Can highlight")
 					vim.api.nvim_create_autocmd({"CursorMoved"}, {
 						callback = function(ev)
 							vim.lsp.buf.clear_references()
