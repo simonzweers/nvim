@@ -20,6 +20,7 @@ function set_theme(index)
 	if index > #themes then
 		print(string.format("No theme at index %d", #themes))
 	end
+	theme_index = index
 	vim.cmd(string.format('colorscheme %s', themes[index]))
 end
 
@@ -29,7 +30,7 @@ function random_theme()
 end
 
 function what_theme()
-	print(string.format("Selected theme: %s", themes[theme_index]))
+	print(string.format("Selected theme: %s (#%d)", themes[theme_index], theme_index))
 end
 
 vim.keymap.set('n', '<leader>hihi', random_theme, {})
@@ -45,5 +46,5 @@ vim.keymap.set('n', '<leader>th8', function() set_theme(8) end, {})
 vim.keymap.set('n', '<leader>th9', function() set_theme(9) end, {})
 vim.keymap.set('n', '<leader>th?', function() what_theme() end, {})
 
-set_theme(1)
+set_theme(8)
 
