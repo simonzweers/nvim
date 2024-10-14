@@ -38,6 +38,7 @@ return {
 				end
 
 			end
+			-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 			lspconfig.clangd.setup({
 				on_attach = on_attach,
 				cmd = { "clangd", "--completion-style=detailed" } }
@@ -45,6 +46,7 @@ return {
 			lspconfig.cmake.setup({ on_attach = on_attach })
 			lspconfig.rust_analyzer.setup({ on_attach = on_attach })
 			lspconfig.pylsp.setup({ on_attach = on_attach })
+			lspconfig.zls.setup({ on_attach = on_attach })
 		end
 	},
 	{
