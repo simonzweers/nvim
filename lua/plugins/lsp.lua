@@ -1,12 +1,12 @@
 return {
 	{
 		"neovim/nvim-lspconfig",
-		dependencies = { "lukas-reineke/lsp-format.nvim" },
+		--dependencies = { "lukas-reineke/lsp-format.nvim" },
 		config = function() 
 			local lspconfig = require('lspconfig')
-			require("lsp-format").setup {}
+			-- require("lsp-format").setup {}
 			local on_attach = function(client, bufnr)
-				require("lsp-format").on_attach(client, bufnr)
+				-- require("lsp-format").on_attach(client, bufnr)
 				local opts = {buffer = bufnr, remap = false}
 				
 				local qfopts = { noremap=true, silent=true }

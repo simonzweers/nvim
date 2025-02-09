@@ -16,6 +16,6 @@ require("lazy").setup({
 --	"vim-airline/vim-airline",
 
 
-	"lukas-reineke/lsp-format.nvim",
 	{'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
 })
+
