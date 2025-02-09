@@ -14,9 +14,15 @@ return {
 					vim.lsp.buf.code_action()
 				end
 				vim.keymap.set("n", "<leader>gd", function() vim.lsp.buf.definition() end, opts)
-				vim.keymap.set("n", "<leader>qf", quickfix, qfopts)
+				vim.keymap.set("n", "<leader>gD", function() vim.lsp.buf.declaration() end, opts)
+				vim.keymap.set("n", "<leader>gb", "<C-^>", opts)
+
+				vim.keymap.set("n", "<leader>gi", function() vim.lsp.buf.implementation() end, opts)
+				vim.keymap.set("n", "<leader>gi", function() vim.lsp.buf.implementation() end, opts)
+
+				vim.keymap.set("n", "<leader><CR>", quickfix, qfopts)
 				vim.keymap.set({"i", "n"}, "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-				vim.keymap.set({"n"}, "<leader>rn", function() vim.lsp.buf.rename() end, opts)
+				vim.keymap.set({"n"}, "<F2>", function() vim.lsp.buf.rename() end, opts)
 
 				if vim.lsp.inlay_hint then
 					vim.keymap.set("n", "<leader>L",
