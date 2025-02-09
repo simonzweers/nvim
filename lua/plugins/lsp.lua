@@ -18,7 +18,8 @@ return {
 				vim.keymap.set("n", "<leader>gb", "<C-^>", opts)
 
 				vim.keymap.set("n", "<leader>gi", function() vim.lsp.buf.implementation() end, opts)
-				vim.keymap.set("n", "<leader>gi", function() vim.lsp.buf.implementation() end, opts)
+				vim.keymap.set("n", "<leader>gt", function() vim.lsp.buf.type_definition() end, opts)
+				vim.keymap.set("n", "<leader>gr", function() vim.lsp.buf.references() end, opts)
 
 				vim.keymap.set("n", "<leader><CR>", quickfix, qfopts)
 				vim.keymap.set({"i", "n"}, "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
