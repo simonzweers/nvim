@@ -14,27 +14,41 @@ return {
 					vim.lsp.buf.code_action()
 				end
 
-				vim.keymap.set("n", "<leader>gd", function() vim.lsp.buf.definition() end, opts)
-				vim.keymap.set("n", "<leader>gD", function() vim.lsp.buf.declaration() end, opts)
-				vim.keymap.set("n", "<leader>gb", "<C-^>", opts)
+				
+				local wk = require("which-key")
+				wk.add({
+					{
+						mode = 'n',
 
-				vim.keymap.set("n", "<leader>gi", function() vim.lsp.buf.implementation() end, opts)
-				vim.keymap.set("n", "<leader>gt", function() vim.lsp.buf.type_definition() end, opts)
-				vim.keymap.set("n", "<leader>gr", function() vim.lsp.buf.references() end, opts)
+						{"<leader>gd", function() vim.lsp.buf.definition() end, desc = "Go to Definition"},
+						{"<leader>gD", function() vim.lsp.buf.declaration() end, desc = "Go to Declaration"},
+						{"<leader>gb", "<C-^>", desc = "Go to previous buffer"},
+						{"<leader>gi", function() vim.lsp.buf.implementation() end, desc = "Go to Implementation"},
+						{"<leader>gt", function() vim.lsp.buf.type_definition() end, desc = "Go to Type Definition"},
+						{"<leader>gr", function() vim.lsp.buf.references() end, desc = "Go to References"},
+						{"<leader><CR>", quickfix, desc = "Code action"},
+						{"<F2>", function() vim.lsp.buf.rename() end, desc = "Rename"},
+					},
 
-				vim.keymap.set("n", "<leader><CR>", quickfix, qfopts)
-				vim.keymap.set({"i", "n"}, "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-				vim.keymap.set({"n"}, "<F2>", function() vim.lsp.buf.rename() end, opts)
+					{"<C-h>", function() vim.lsp.buf.signature_help() end, mode = {'n', 'i'}, desc = "Signature Help"}
+					
+				})
 
 				if vim.lsp.inlay_hint then
-					vim.keymap.set("n", "<leader>L",
-					function() 
-						if vim.lsp.inlay_hint.is_enabled() 
-							then vim.lsp.inlay_hint.enable(false, { bufnr })
-							else vim.lsp.inlay_hint.enable(true, { bufnr })
-							end 
-						end, {})
-					end
+					wk.add({
+						{
+							"<leader>L",
+							function() 
+								if vim.lsp.inlay_hint.is_enabled() 
+									then vim.lsp.inlay_hint.enable(false, { bufnr })
+									else vim.lsp.inlay_hint.enable(true, { bufnr })
+									end 
+								end,
+
+							desc = "Toggle inlay hints"
+						}
+					})
+				end
 				if client.supports_method('textDocument/documentHighlight') then
 					vim.api.nvim_create_autocmd({"CursorMoved"}, {
 						buffer = bufnr,
