@@ -13,6 +13,7 @@ return {
 				local function quickfix()
 					vim.lsp.buf.code_action()
 				end
+
 				vim.keymap.set("n", "<leader>gd", function() vim.lsp.buf.definition() end, opts)
 				vim.keymap.set("n", "<leader>gD", function() vim.lsp.buf.declaration() end, opts)
 				vim.keymap.set("n", "<leader>gb", "<C-^>", opts)
