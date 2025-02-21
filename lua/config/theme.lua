@@ -46,5 +46,5 @@ vim.keymap.set('n', '<leader>th8', function() set_theme(8) end, {})
 vim.keymap.set('n', '<leader>th9', function() set_theme(9) end, {})
 vim.keymap.set('n', '<leader>th?', function() what_theme() end, {})
 
-set_theme(8)
+set_theme(2)
 
