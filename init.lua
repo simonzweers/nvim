@@ -14,6 +14,7 @@ vim.opt.softtabstop = identwidth
 vim.opt.shiftwidth = identwidth
 vim.opt.number = true
 vim.opt.relativenumber = true
+vim.opt.wrap = false
 
 require('config.plugins')
 
