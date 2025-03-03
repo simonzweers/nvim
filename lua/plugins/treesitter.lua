@@ -14,7 +14,8 @@ return {
 					"haskell",
 					"go",
 					"java",
-					"python"
+					"python",
+					"latex",
 				},
 
 				-- Install parsers synchronously (only applied to `ensure_installed`)
