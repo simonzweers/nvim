@@ -1,6 +1,7 @@
 local identwidth = 4
 
 vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 -- vim.keymap.set('n', '<leader>f', ':Files<CR>', {})
 -- vim.keymap.set('n', '<leader>gf', ':GFiles<CR>', {})
 -- vim.keymap.set('n', '<leader>e', vim.cmd.Ex, {})
@@ -15,6 +16,7 @@ vim.opt.shiftwidth = identwidth
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.wrap = false
+vim.opt.conceallevel = 2
 
 require('config.plugins')
 

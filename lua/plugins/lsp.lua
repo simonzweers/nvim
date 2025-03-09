@@ -69,6 +69,7 @@ return {
 			lspconfig.rust_analyzer.setup({ on_attach = on_attach })
 			lspconfig.pylsp.setup({ on_attach = on_attach })
 			lspconfig.zls.setup({ on_attach = on_attach })
+			lspconfig.texlab.setup({ on_attach = on_attach })
 		end
 	},
 	{

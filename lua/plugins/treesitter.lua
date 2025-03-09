@@ -15,7 +15,6 @@ return {
 					"go",
 					"java",
 					"python",
-					"latex",
 				},
 
 				-- Install parsers synchronously (only applied to `ensure_installed`)
@@ -30,6 +29,7 @@ return {
 
 				highlight = {
 					enable = true,
+					disable = { "latex" },
 				},
 			})
 			local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
