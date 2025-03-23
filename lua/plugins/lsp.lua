@@ -2,19 +2,17 @@ return {
 	{
 		"neovim/nvim-lspconfig",
 		--dependencies = { "lukas-reineke/lsp-format.nvim" },
-		config = function() 
+		config = function()
 			local lspconfig = require('lspconfig')
 			-- require("lsp-format").setup {}
 			local on_attach = function(client, bufnr)
 				-- require("lsp-format").on_attach(client, bufnr)
 				local opts = {buffer = bufnr, remap = false}
-				
 				local qfopts = { noremap=true, silent=true }
 				local function quickfix()
 					vim.lsp.buf.code_action()
 				end
 
-				
 				local wk = require("which-key")
 				wk.add({
 					{
@@ -31,18 +29,17 @@ return {
 					},
 
 					{"<C-h>", function() vim.lsp.buf.signature_help() end, mode = {'n', 'i'}, desc = "Signature Help"}
-					
 				})
 
 				if vim.lsp.inlay_hint then
 					wk.add({
 						{
 							"<leader>L",
-							function() 
-								if vim.lsp.inlay_hint.is_enabled() 
+							function()
+								if vim.lsp.inlay_hint.is_enabled()
 									then vim.lsp.inlay_hint.enable(false, { bufnr })
 									else vim.lsp.inlay_hint.enable(true, { bufnr })
-									end 
+									end
 								end,
 
 							desc = "Toggle inlay hints"
@@ -71,24 +68,6 @@ return {
 			lspconfig.zls.setup({ on_attach = on_attach })
 			lspconfig.texlab.setup({ on_attach = on_attach })
 			lspconfig.lua_ls.setup({ on_attach = on_attach })
-		end
-	},
-	{
-		'williamboman/mason.nvim',
-		dependencies = { "williamboman/mason-lspconfig.nvim" },
-		config = function()
-			require('mason').setup({})
-			require('mason-lspconfig').setup({
-				ensure_installed = {
-
-				},
-				handlers = {
-					function(server_name)
-						require('lspconfig')[server_name].setup({})
-					end,
-				},
-			})
-
 		end
 	},
 }
