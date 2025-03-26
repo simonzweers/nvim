@@ -1,7 +1,10 @@
 return {
 	{
 		"neovim/nvim-lspconfig",
-		--dependencies = { "lukas-reineke/lsp-format.nvim" },
+		dependencies = {
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
+		},
 		config = function()
 			local lspconfig = require('lspconfig')
 			-- require("lsp-format").setup {}
@@ -68,6 +71,7 @@ return {
 			lspconfig.zls.setup({ on_attach = on_attach })
 			lspconfig.texlab.setup({ on_attach = on_attach })
 			lspconfig.lua_ls.setup({ on_attach = on_attach })
+			lspconfig.gopls.setup({ on_attach = on_attach })
 		end
 	},
 }

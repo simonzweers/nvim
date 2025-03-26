@@ -1,12 +1,9 @@
 return {
 	{
 		"williamboman/mason.nvim",
-		opts = {
-			ensure_installed = {
-			}
-		},
 		config = function()
 			require("mason").setup()
+			require("mason-lspconfig").setup()
 		end
 	},
 	{
@@ -18,6 +15,8 @@ return {
 				"rust_analyzer",
 				"clangd",
 				"pylsp",
+				"gopls",
+				"cmake",
 				-- "clang-format",
 				-- "shellcheck",
 			},
