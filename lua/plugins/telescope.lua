@@ -12,6 +12,8 @@ return {
 				{'<leader>fr', builtin.live_grep, desc = "Live Grep", mode = 'n'},
 				{'<leader>fg', builtin.git_files, desc = "Find Git Files", mode = 'n'},
 				{'<leader>fh', builtin.help_tags, desc = "Help Tags", mode = 'n'},
+				{'<leader>gr', builtin.lsp_references, desc = "Go to LSP reference", mode = 'n'},
+				{'<leader>fb', builtin.buffers, desc = "Find buffer", mode = 'n'},
 			})
 		end
 	}

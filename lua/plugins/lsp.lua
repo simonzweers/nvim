@@ -23,7 +23,7 @@ return {
 						{"<leader>gb", "<C-^>", desc = "Go to previous buffer"},
 						{"<leader>gi", function() vim.lsp.buf.implementation() end, desc = "Go to Implementation"},
 						{"<leader>gt", function() vim.lsp.buf.type_definition() end, desc = "Go to Type Definition"},
-						{"<leader>gr", function() vim.lsp.buf.references() end, desc = "Go to References"},
+						-- {"<leader>gr", function() vim.lsp.buf.references() end, desc = "Go to References"},
 						{"<leader><CR>", quickfix, desc = "Code action"},
 						{"<F2>", function() vim.lsp.buf.rename() end, desc = "Rename"},
 					},
