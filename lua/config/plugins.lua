@@ -13,9 +13,5 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{import = "plugins"},
---	"vim-airline/vim-airline",
-
-
-	{'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
 })
 
