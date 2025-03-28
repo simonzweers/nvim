@@ -17,6 +17,7 @@ return {
 				"pylsp",
 				"gopls",
 				"cmake",
+				"bashls",
 				-- "clang-format",
 				-- "shellcheck",
 			},
