@@ -18,6 +18,7 @@ return {
 				"gopls",
 				"cmake",
 				"bashls",
+				"zls",
 				-- "clang-format",
 				-- "shellcheck",
 			},
