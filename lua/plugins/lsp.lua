@@ -16,6 +16,33 @@ return {
 					vim.lsp.buf.code_action()
 				end
 
+				vim.diagnostic.config(
+					{
+						virtual_text = true,
+						virtual_lines = false,
+
+					}
+				)
+				local virtual_lines = false
+
+				local function toggle_diagnostics()
+					if virtual_lines == true then
+						-- Disable
+						virtual_lines = false
+						vim.diagnostic.config({
+							virtual_lines = false,
+							virtual_text = true,
+						})
+					else
+						-- Enable
+						virtual_lines = true
+						vim.diagnostic.config({
+							virtual_lines = true,
+							virtual_text = false,
+						})
+					end
+				end
+
 				local wk = require("which-key")
 				wk.add({
 					{
@@ -29,6 +56,7 @@ return {
 						-- {"<leader>gr", function() vim.lsp.buf.references() end, desc = "Go to References"},
 						{"<leader><CR>", quickfix, desc = "Code action"},
 						{"<F2>", function() vim.lsp.buf.rename() end, desc = "Rename"},
+						{"<F3>", toggle_diagnostics, desc = "Toggle diagnostic lines"}
 					},
 
 					{"<C-h>", function() vim.lsp.buf.signature_help() end, mode = {'n', 'i'}, desc = "Signature Help"}
@@ -60,6 +88,8 @@ return {
 				end
 
 			end
+
+			
 			-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 			lspconfig.clangd.setup({
 				on_attach = on_attach,
