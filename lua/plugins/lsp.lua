@@ -57,7 +57,7 @@ return {
 						{"<leader><CR>", quickfix, desc = "Code action"},
 						{"<F2>", function() vim.lsp.buf.rename() end, desc = "Rename"},
 						{"<F3>", toggle_diagnostics, desc = "Toggle diagnostic lines"},
-						{"<leader>chs", "ClangdSwitchSourceHeader", desc = "Clangd Switch Source/Header"},
+						{"<leader>chs", ":ClangdSwitchSourceHeader<CR>", desc = "Clangd Switch Source/Header"},
 					},
 
 					{"<C-h>", function() vim.lsp.buf.signature_help() end, mode = {'n', 'i'}, desc = "Signature Help"}
