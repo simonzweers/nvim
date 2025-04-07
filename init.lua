@@ -23,7 +23,7 @@ require('config.plugins')
 
 require('config.theme')
 require('config.autocmds')
-require('config.lsp')
+-- require('config.lsp') -- Uncomment for using built-in lsp config
 
 local wk = require("which-key")
 wk.add({
