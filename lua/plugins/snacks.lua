@@ -24,6 +24,9 @@ return {
 				notification = {
 					-- wo = { wrap = true } -- Wrap notifications
 				}
+			},
+			image = {
+				enabled = true
 			}
 		},
 		keys = {
