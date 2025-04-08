@@ -5,6 +5,7 @@ return {
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 		},
+		event = 'VeryLazy',
 		config = function()
 			local lspconfig = require('lspconfig')
 			-- require("lsp-format").setup {}

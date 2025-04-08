@@ -1,6 +1,7 @@
 return {
 	{
 		'L3MON4D3/LuaSnip',
+		event = 'VeryLazy',
 		dependencies = {
 			"rafamadriz/friendly-snippets",
 			"saadparwaiz1/cmp_luasnip"
@@ -8,6 +9,7 @@ return {
 	},
 	{
 		'hrsh7th/nvim-cmp',
+		event = 'VeryLazy',
 		config = function()
 			local cmp = require('cmp')
 			local cmp_select = {behavior = cmp.SelectBehavior.Select}
