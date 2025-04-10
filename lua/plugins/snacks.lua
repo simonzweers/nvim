@@ -6,7 +6,25 @@ return {
 		---@type snacks.Config
 		opts = {
 			bigfile = { enabled = true },
-			dashboard = { enabled = true },
+			dashboard = { 
+				enabled = true,
+				sections = {
+					{
+						section = "terminal",
+						cmd = "cowsay -f stegosaurus \"...\"" ,
+						height = 17,
+						padding = 1,
+					},
+					{
+						pane = 2,
+						{ section = "keys", gap = 1, padding = 1 },
+						{ section = "startup" },
+					},
+				},
+				preset = {
+					header = ""
+				}
+			},
 			explorer = { enabled = true },
 			indent = { enabled = true },
 			input = { enabled = true },
