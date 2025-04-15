@@ -105,6 +105,7 @@ return {
 			lspconfig.lua_ls.setup({ on_attach = on_attach })
 			lspconfig.gopls.setup({ on_attach = on_attach })
 			lspconfig.bashls.setup({ on_attach = on_attach })
+			lspconfig.ts_ls.setup({ on_attach = on_attach })
 		end
 	},
 }
