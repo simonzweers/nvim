@@ -7,7 +7,9 @@ return {
 			local conform = require("conform")
 			conform.setup({
 				formatters_by_ft = {
-					cpp = { "clang_format" }
+					cpp = { "clang_format" },
+					rust = { "rustfmt", lsp_format = "fallback" },
+					lua = { "stylua" },
 				},
 				formatters = {
 					clang_format = {
