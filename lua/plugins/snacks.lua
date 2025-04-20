@@ -12,6 +12,7 @@ return {
 					{
 						section = "terminal",
 						cmd = "cowsay -f stegosaurus \"...\"" ,
+						-- cmd = "fastfetch" ,
 						height = 17,
 						padding = 1,
 					},
