@@ -35,6 +35,14 @@ return {
 			})
 			local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
             ts_update()
+
+			local parsers = require('nvim-treesitter.parsers').get_parser_configs()
+			parsers.cpp.used_by = { "cpp", "hpp", "tpp" }  -- Add tpp to the list
+			vim.filetype.add({
+				extension = {
+					tpp = "cpp",  -- Treat .tpp files as C++
+				},
+			})
 		end
 	},
 }
