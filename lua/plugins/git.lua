@@ -52,8 +52,12 @@ return {
 						gitsigns.diffthis("~")
 					end)
 					map("n", "<leader>td", gitsigns.toggle_deleted)
-					map("n", "[h", gitsigns.nav_hunk("prev"))
-					map("n", "]h", gitsigns.nav_hunk("next"))
+					map("n", "[h", function()
+						gitsigns.nav_hunk("prev")
+					end)
+					map("n", "]h", function()
+						gitsigns.nav_hunk("next")
+					end)
 
 					-- Text object
 					--
