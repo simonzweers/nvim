@@ -2,7 +2,7 @@ return {
 	{
 		"stevearc/conform.nvim",
 		opts = {},
-		event = 'VeryLazy',
+		event = "VeryLazy",
 		config = function()
 			local conform = require("conform")
 			conform.setup({
@@ -13,8 +13,8 @@ return {
 				},
 				formatters = {
 					clang_format = {
-						prepend_args = {"--style=file:.clang-format"}
-					}
+						prepend_args = { "--style=file:.clang-format" },
+					},
 				},
 			})
 			vim.api.nvim_create_autocmd("BufWritePre", {
@@ -23,6 +23,6 @@ return {
 					require("conform").format({ bufnr = args.buf })
 				end,
 			})
-		end
-	}
+		end,
+	},
 }
