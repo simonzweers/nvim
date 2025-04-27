@@ -1,7 +1,7 @@
 local identwidth = 4
 
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 -- vim.keymap.set('n', '<leader>f', ':Files<CR>', {})
 -- vim.keymap.set('n', '<leader>gf', ':GFiles<CR>', {})
 -- vim.keymap.set('n', '<leader>e', vim.cmd.Ex, {})
@@ -17,17 +17,19 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.wrap = false
 vim.opt.conceallevel = 2
+vim.opt.termguicolors = true
+vim.opt.scrolloff = 12
 -- vim.opt.clipboard = "unnamedplus"
 
-require('config.plugins')
+require("config.plugins")
 
-require('config.theme')
-require('config.autocmds')
+require("config.theme")
+require("config.autocmds")
 -- require('config.lsp') -- Uncomment for using built-in lsp config
 
 local wk = require("which-key")
 wk.add({
-	{'<C-s>', vim.cmd.wa, desc = "Save file", mode = 'n'},
-	{'<leader>qq', vim.cmd.wqa, desc = "Save and Quit", mode = 'n'},
-	{'<C-c>', '"+y<CR>', desc = "Copy into OS buffer", mode = 'v'},
+	{ "<C-s>", vim.cmd.wa, desc = "Save file", mode = "n" },
+	{ "<leader>qq", vim.cmd.wqa, desc = "Save and Quit", mode = "n" },
+	{ "<C-c>", '"+y<CR>', desc = "Copy into OS buffer", mode = "v" },
 })
