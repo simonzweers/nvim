@@ -6,11 +6,11 @@ return {
 			"!vim", -- Exclude vim from highlighting.
 			-- Exclusion Only makes sense if '*' is specified!
 		})
-		vim.api.nvim_create_autocmd("BufWritePre", {
-			pattern = "*",
-			callback = function(args)
-				vim.cmd("ColorizerReloadAllBuffers")
-			end,
-		})
+		-- vim.api.nvim_create_autocmd("BufWritePre", {
+		-- 	pattern = "*",
+		-- 	callback = function(args)
+		-- 		vim.cmd("ColorizerReloadAllBuffers")
+		-- 	end,
+		-- })
 	end,
 }
