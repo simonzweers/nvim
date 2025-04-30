@@ -18,7 +18,7 @@ vim.opt.relativenumber = true
 vim.opt.wrap = false
 vim.opt.conceallevel = 2
 vim.opt.termguicolors = true
-vim.opt.scrolloff = 12
+vim.opt.scrolloff = 7
 -- vim.opt.clipboard = "unnamedplus"
 
 require("config.plugins")
