@@ -33,6 +33,3 @@ wk.add({
 	{ "<leader>qq", vim.cmd.wqa, desc = "Save and Quit", mode = "n" },
 	{ "<C-c>", '"+y<CR>', desc = "Copy into OS buffer", mode = "v" },
 })
-
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
