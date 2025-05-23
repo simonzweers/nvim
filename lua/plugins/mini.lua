@@ -17,6 +17,8 @@ return {
 						hex_color = hipatterns.gen_highlighter.hex_color(),
 					},
 				})
+
+				local surround = require("mini.surround").setup()
 			end,
 		},
 	},
