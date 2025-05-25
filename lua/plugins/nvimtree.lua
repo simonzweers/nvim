@@ -10,7 +10,10 @@ return {
 					side = "right",
 				},
 			})
-			vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", {})
+			-- vim.keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", {})
 		end,
+		keys = {
+			{ "<leader>e", ":NvimTreeToggle<CR>", { desc = "Toggle NvimTree" } },
+		},
 	},
 }
