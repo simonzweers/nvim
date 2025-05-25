@@ -1,30 +1,38 @@
 return {
-
 	{
 		"ellisonleao/gruvbox.nvim",
-		priority = 1000 ,
+		lazy = true,
+		priority = 1000,
 		config = true,
 	},
-	"rebelot/kanagawa.nvim",
+	{
+		"rebelot/kanagawa.nvim",
+		lazy = true,
+	},
 	{
 		"catppuccin/nvim",
-		name = "catppuccin", 
-		priority = 1000 
+		lazy = true,
+		name = "catppuccin",
+		priority = 1000,
 	},
 	{
 		"folke/tokyonight.nvim",
-		lazy = false,
+		lazy = true,
 		priority = 1000,
 		opts = {},
 	},
 	{
-		'navarasu/onedark.nvim',
-		config = function() 
-			require('onedark').setup {
-				style = 'darker'
-			}
-			require('onedark').load()
-		end
+		"navarasu/onedark.nvim",
+		lazy = true,
+		config = function()
+			require("onedark").setup({
+				style = "darker",
+			})
+			require("onedark").load()
+		end,
 	},
-	'Mofiqul/vscode.nvim',
+	{
+		"Mofiqul/vscode.nvim",
+		lazy = true,
+	},
 }

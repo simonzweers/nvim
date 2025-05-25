@@ -1,8 +1,7 @@
 return {
 	{
 		"mfussenegger/nvim-lint",
-		-- event = "VeryLazy",
-		lazy = false,
+		event = "VeryLazy",
 		opts = {
 			linters_by_ft = {
 				markdown = { "vale" },
