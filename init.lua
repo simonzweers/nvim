@@ -26,11 +26,5 @@ require("config.plugins")
 
 require("config.theme")
 require("config.autocmds")
+require("config.keys")
 -- require('config.lsp') -- Uncomment for using built-in lsp config
-
-local wk = require("which-key")
-wk.add({
-	{ "<C-s>", vim.cmd.wa, desc = "Save file", mode = "n" },
-	{ "<leader>qq", vim.cmd.wqa, desc = "Save and Quit", mode = "n" },
-	{ "<C-c>", '"+y<CR>', desc = "Copy into OS buffer", mode = "v" },
-})
