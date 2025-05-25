@@ -94,7 +94,8 @@ return {
 			ins_left({
 				-- mode component
 				function()
-					return ""
+					-- return "      "
+					return " "
 				end,
 				color = function()
 					-- auto change color according to neovims mode
@@ -198,7 +199,7 @@ return {
 
 			ins_right({
 				"branch",
-				icon = "",
+				icon = " ",
 				color = { fg = colors.violet, gui = "bold" },
 			})
 
