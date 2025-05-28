@@ -2,16 +2,15 @@ return {
 	{
 		"mfussenegger/nvim-lint",
 		event = "VeryLazy",
-		opts = {
-			linters_by_ft = {
+		opts = {},
+		config = function()
+			local lint = require("lint")
+			lint.linters_by_ft = {
 				markdown = { "vale" },
 				bash = { "shellcheck" },
 				sh = { "shellcheck" },
 				cpp = { "cpplint" },
-			},
-		},
-		config = function()
-			local lint = require("lint")
+			}
 			vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave", "TextChanged" }, {
 				callback = function()
 					-- try_lint without arguments runs the linters defined in `linters_by_ft`
