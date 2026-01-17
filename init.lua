@@ -27,4 +27,4 @@ require("config.plugins")
 require("config.theme")
 require("config.autocmds")
 require("config.keys")
--- require('config.lsp') -- Uncomment for using built-in lsp config
+require("config.lsp") -- Uncomment for using built-in lsp config
