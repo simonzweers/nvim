@@ -5,107 +5,182 @@ return {
 			"williamboman/mason.nvim",
 			"williamboman/mason-lspconfig.nvim",
 		},
-		event = 'VeryLazy',
-		config = function()
-			local lspconfig = require('lspconfig')
-			-- require("lsp-format").setup {}
-			local on_attach = function(client, bufnr)
-				-- require("lsp-format").on_attach(client, bufnr)
-				local opts = {buffer = bufnr, remap = false}
-				local qfopts = { noremap=true, silent=true }
-				local function quickfix()
-					vim.lsp.buf.code_action()
-				end
-
-				vim.diagnostic.config(
-					{
-						virtual_text = true,
-						virtual_lines = false,
-
-					}
-				)
-				local virtual_lines = false
-
-				local function toggle_diagnostics()
-					if virtual_lines == true then
-						-- Disable
-						virtual_lines = false
-						vim.diagnostic.config({
-							virtual_lines = false,
-							virtual_text = true,
-						})
-					else
-						-- Enable
-						virtual_lines = true
-						vim.diagnostic.config({
-							virtual_lines = true,
-							virtual_text = false,
-						})
-					end
-				end
-
-				local wk = require("which-key")
-				wk.add({
-					{
-						mode = 'n',
-
-						{"<leader>gd", function() vim.lsp.buf.definition() end, desc = "Go to Definition"},
-						{"<leader>gD", function() vim.lsp.buf.declaration() end, desc = "Go to Declaration"},
-						{"<leader>gb", "<C-^>", desc = "Go to previous buffer"},
-						{"<leader>gi", function() vim.lsp.buf.implementation() end, desc = "Go to Implementation"},
-						{"<leader>gt", function() vim.lsp.buf.type_definition() end, desc = "Go to Type Definition"},
-						-- {"<leader>gr", function() vim.lsp.buf.references() end, desc = "Go to References"},
-						{"<leader><CR>", quickfix, desc = "Code action"},
-						{"<F2>", function() vim.lsp.buf.rename() end, desc = "Rename"},
-						{"<F3>", toggle_diagnostics, desc = "Toggle diagnostic lines"},
-						{"<leader>chs", ":ClangdSwitchSourceHeader<CR>", desc = "Clangd Switch Source/Header"},
-					},
-
-					{"<C-h>", function() vim.lsp.buf.signature_help() end, mode = {'n', 'i'}, desc = "Signature Help"}
-				})
-
-				if vim.lsp.inlay_hint then
-					wk.add({
-						{
-							"<leader>L",
-							function()
-								if vim.lsp.inlay_hint.is_enabled()
-									then vim.lsp.inlay_hint.enable(false, { bufnr })
-									else vim.lsp.inlay_hint.enable(true, { bufnr })
-									end
-								end,
-
-							desc = "Toggle inlay hints"
-						}
-					})
-				end
-				if client.supports_method('textDocument/documentHighlight') then
-					vim.api.nvim_create_autocmd({"CursorMoved"}, {
-						buffer = bufnr,
-						callback = function(ev)
-							vim.lsp.buf.clear_references()
-							vim.lsp.buf.document_highlight()
-						end
-					})
-				end
-
-			end
-
-			
-			-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
-			lspconfig.clangd.setup({
-				on_attach = on_attach,
-				cmd = { "clangd", "--completion-style=detailed" } }
-			)
-			lspconfig.cmake.setup({ on_attach = on_attach })
-			lspconfig.rust_analyzer.setup({ on_attach = on_attach })
-			lspconfig.pylsp.setup({ on_attach = on_attach })
-			lspconfig.zls.setup({ on_attach = on_attach })
-			lspconfig.texlab.setup({ on_attach = on_attach })
-			lspconfig.lua_ls.setup({ on_attach = on_attach })
-			lspconfig.gopls.setup({ on_attach = on_attach })
-			lspconfig.bashls.setup({ on_attach = on_attach })
-			lspconfig.ts_ls.setup({ on_attach = on_attach })
-		end
+		-- event = "VeryLazy",
+		-- config = function()
+		-- 	require("mason").setup()
+		-- 	require("mason-lspconfig").setup()
+		--
+		-- 	-- ──────────────────────────────────────────────────────────────
+		-- 	-- On Attach
+		-- 	-- ──────────────────────────────────────────────────────────────
+		--
+		-- 	local on_attach = function(client, bufnr)
+		-- 		local opts = { buffer = bufnr, remap = false }
+		-- 		local qfopts = { noremap = true, silent = true }
+		--
+		-- 		vim.diagnostic.config({
+		-- 			virtual_text = true,
+		-- 			virtual_lines = false,
+		-- 		})
+		--
+		-- 		local virtual_lines = false
+		-- 		local function toggle_diagnostics()
+		-- 			if virtual_lines then
+		-- 				virtual_lines = false
+		-- 				vim.diagnostic.config({
+		-- 					virtual_lines = false,
+		-- 					virtual_text = true,
+		-- 				})
+		-- 			else
+		-- 				virtual_lines = true
+		-- 				vim.diagnostic.config({
+		-- 					virtual_lines = true,
+		-- 					virtual_text = false,
+		-- 				})
+		-- 			end
+		-- 		end
+		--
+		-- 		local wk = require("which-key")
+		--
+		-- 		wk.add({
+		-- 			mode = "n",
+		--
+		-- 			{
+		-- 				"<leader>gd",
+		-- 				function()
+		-- 					vim.lsp.buf.definition()
+		-- 				end,
+		-- 				desc = "Go to Definition",
+		-- 			},
+		-- 			{
+		-- 				"<leader>gD",
+		-- 				function()
+		-- 					vim.lsp.buf.declaration()
+		-- 				end,
+		-- 				desc = "Go to Declaration",
+		-- 			},
+		-- 			{ "<leader>gb", "<C-^>", desc = "Go to previous buffer" },
+		-- 			{
+		-- 				"<leader>gi",
+		-- 				function()
+		-- 					vim.lsp.buf.implementation()
+		-- 				end,
+		-- 				desc = "Go to Implementation",
+		-- 			},
+		-- 			{
+		-- 				"<leader>gt",
+		-- 				function()
+		-- 					vim.lsp.buf.type_definition()
+		-- 				end,
+		-- 				desc = "Go to Type Definition",
+		-- 			},
+		-- 			{ "<leader><CR>", vim.lsp.buf.code_action, desc = "Code action" },
+		-- 			{
+		-- 				"<F2>",
+		-- 				function()
+		-- 					vim.lsp.buf.rename()
+		-- 				end,
+		-- 				desc = "Rename",
+		-- 			},
+		-- 			{
+		-- 				"<F3>",
+		-- 				toggle_diagnostics,
+		-- 				desc = "Toggle diagnostic lines",
+		-- 			},
+		-- 			{
+		-- 				"<leader>chs",
+		-- 				":ClangdSwitchSourceHeader<CR>",
+		-- 				desc = "Clangd Switch Source/Header",
+		-- 			},
+		-- 		})
+		--
+		-- 		wk.add({
+		-- 			"<C-h>",
+		-- 			function()
+		-- 				vim.lsp.buf.signature_help()
+		-- 			end,
+		-- 			mode = { "n", "i" },
+		-- 			desc = "Signature Help",
+		-- 		})
+		--
+		-- 		if vim.lsp.inlay_hint then
+		-- 			wk.add({
+		-- 				{
+		-- 					"<leader>L",
+		-- 					function()
+		-- 						if vim.lsp.inlay_hint.is_enabled() then
+		-- 							vim.lsp.inlay_hint.enable(false, { bufnr })
+		-- 						else
+		-- 							vim.lsp.inlay_hint.enable(true, { bufnr })
+		-- 						end
+		-- 					end,
+		-- 					desc = "Toggle inlay hints",
+		-- 				},
+		-- 			})
+		-- 		end
+		--
+		-- 		if client.supports_method("textDocument/documentHighlight") then
+		-- 			vim.api.nvim_create_autocmd("CursorMoved", {
+		-- 				buffer = bufnr,
+		-- 				callback = function()
+		-- 					vim.lsp.buf.clear_references()
+		-- 					vim.lsp.buf.document_highlight()
+		-- 				end,
+		-- 			})
+		-- 		end
+		-- 	end
+		--
+		-- 	-- ──────────────────────────────────────────────────────────────
+		-- 	-- Native Neovim LSP Configs (Option 2)
+		-- 	-- ──────────────────────────────────────────────────────────────
+		--
+		-- 	local configs = vim.lsp.config
+		--
+		-- 	configs.clangd = {
+		-- 		cmd = { "clangd", "--completion-style=detailed" },
+		-- 		on_attach = on_attach,
+		-- 	}
+		--
+		-- 	configs.cmake = { on_attach = on_attach }
+		-- 	configs.rust_analyzer = { on_attach = on_attach }
+		-- 	configs.pylsp = { on_attach = on_attach }
+		-- 	configs.zls = { on_attach = on_attach }
+		-- 	configs.texlab = { on_attach = on_attach }
+		-- 	configs.lua_ls = { on_attach = on_attach }
+		-- 	configs.gopls = { on_attach = on_attach }
+		-- 	configs.bashls = { on_attach = on_attach }
+		-- 	configs.ts_ls = { on_attach = on_attach }
+		--
+		-- 	-- ──────────────────────────────────────────────────────────────
+		-- 	-- Auto-start all LSPs using vim.lsp.start
+		-- 	-- ──────────────────────────────────────────────────────────────
+		--
+		-- 	local servers = {
+		-- 		"clangd",
+		-- 		"cmake",
+		-- 		"rust_analyzer",
+		-- 		"pylsp",
+		-- 		"zls",
+		-- 		"texlab",
+		-- 		"lua_ls",
+		-- 		"gopls",
+		-- 		"bashls",
+		-- 		"ts_ls",
+		-- 	}
+		--
+		-- 	vim.api.nvim_create_autocmd("FileType", {
+		-- 		callback = function(event)
+		-- 			local ft = event.match
+		-- 			for _, server in ipairs(servers) do
+		-- 				local cfg = configs[server]
+		-- 				if cfg and (cfg.filetypes == nil or vim.tbl_contains(cfg.filetypes, ft)) then
+		-- 					cfg.root_dir = vim.fs.root(event.buf, { ".git", "package.json", "CMakeLists.txt" })
+		-- 						or vim.fn.getcwd()
+		-- 					vim.lsp.start(cfg)
+		-- 				end
+		-- 			end
+		-- 		end,
+		-- 	})
+		-- end,
 	},
 }
