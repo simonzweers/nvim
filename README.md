@@ -2,5 +2,6 @@
 
 install with:
 ```bash
+sudo dnf cowsay fortune git cmake go tree-sitter-cli go
 git clone git@github.com:simonzweers/nvim-2.git ~/.config/nvim
 ```
