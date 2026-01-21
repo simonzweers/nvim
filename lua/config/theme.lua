@@ -21,8 +21,9 @@ function set_theme(index)
 	end
 	theme_index = index
 	vim.cmd(string.format("colorscheme %s", themes[index]))
-	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+	-- For transparency:
+	-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+	-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 end
 
 function random_theme()
