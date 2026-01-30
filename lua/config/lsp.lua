@@ -109,20 +109,20 @@ end
 
 local cfg = vim.lsp.config
 
-cfg.clangd = {
+vim.lsp.config["clangd"] = {
 	cmd = { "clangd", "--completion-style=detailed" },
 	on_attach = on_attach,
 }
 
-cfg.rust_analyzer = { on_attach = on_attach }
-cfg.pylsp = { on_attach = on_attach }
-cfg.zls = { on_attach = on_attach }
-cfg.texlab = { on_attach = on_attach }
-cfg.lua_ls = { on_attach = on_attach }
-cfg.cmake = { on_attach = on_attach }
-cfg.gopls = { on_attach = on_attach }
-cfg.bashls = { on_attach = on_attach }
-cfg.ts_ls = { on_attach = on_attach }
+vim.lsp.config["rust_analyzer"] = { on_attach = on_attach }
+vim.lsp.config["pylsp"] = { on_attach = on_attach }
+vim.lsp.config["zls"] = { on_attach = on_attach }
+vim.lsp.config["texlab"] = { on_attach = on_attach }
+vim.lsp.config["lua_ls"] = { on_attach = on_attach }
+vim.lsp.config["cmake"] = { on_attach = on_attach }
+vim.lsp.config["gopls"] = { on_attach = on_attach }
+vim.lsp.config["bashls"] = { on_attach = on_attach }
+vim.lsp.config["ts_ls"] = { on_attach = on_attach }
 
 -- List of servers to start
 local servers = {
@@ -138,32 +138,6 @@ local servers = {
 	"ts_ls",
 }
 
--- ========================================================================
--- Auto-start LSPs when entering a buffer
--- ========================================================================
-
-vim.api.nvim_create_autocmd("FileType", {
-	callback = function(event)
-		local ft = event.match
-
-		for _, server in ipairs(servers) do
-			local s = cfg[server]
-			if not s then
-				goto continue
-			end
-
-			-- If server defines a filetype filter, enforce it
-			if s.filetypes and not vim.tbl_contains(s.filetypes, ft) then
-				goto continue
-			end
-
-			-- Detect root: git, project manifests, fallback to cwd
-			s.root_dir = vim.fs.root(event.buf, { ".git", "package.json", "CMakeLists.txt" }) or vim.fn.getcwd()
-
-			-- Start LSP
-			vim.lsp.start(s)
-
-			::continue::
-		end
-	end,
-})
+for _, server in ipairs(servers) do
+	vim.lsp.enable(server)
+end
