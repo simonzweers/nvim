@@ -11,8 +11,7 @@ return {
 			-- Color table for highlights
 			-- stylua: ignore
 			local colors = {
-				bg       = '#282727',
-				fg       = '#bbc2cf',
+				fg       = '#1A1B26',
 				yellow   = '#ECBE7B',
 				cyan     = '#008080',
 				darkblue = '#081633',
