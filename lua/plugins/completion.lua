@@ -46,6 +46,7 @@ return {
 					{ name = "path" },
 					{ name = "nvim_lsp_signature_help" },
 					{ name = "nvim_lua" },
+					{ name = "lazydev", group_index = 0 },
 				}),
 				mapping = cmp.mapping.preset.insert({
 					["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
