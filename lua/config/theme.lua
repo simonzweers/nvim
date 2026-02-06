@@ -68,4 +68,4 @@ vim.keymap.set("n", "<leader>th?", function()
 	what_theme()
 end, {})
 
-set_theme(2)
+set_theme(5)
