@@ -1,12 +1,12 @@
 return {
 	{
-		'nvim-telescope/telescope.nvim',
-		event = 'VeryLazy',
-		tag = '0.1.6',
-		dependencies = { 'nvim-lua/plenary.nvim' },
+		"nvim-telescope/telescope.nvim",
+		event = "VeryLazy",
+		tag = "0.1.6",
+		dependencies = { "nvim-lua/plenary.nvim" },
 		config = function()
-			local builtin = require('telescope.builtin')
-			
+			local builtin = require("telescope.builtin")
+
 			-- local wk = require("which-key")
 			-- wk.add({
 			-- 	-- {'<leader>ff', builtin.find_files, desc = "Find Files", mode = 'n'},
@@ -16,6 +16,6 @@ return {
 			-- 	-- {'<leader>gr', builtin.lsp_references, desc = "Go to LSP reference", mode = 'n'},
 			-- 	-- {'<leader>fb', builtin.buffers, desc = "Find buffer", mode = 'n'},
 			-- })
-		end
-	}
+		end,
+	},
 }
