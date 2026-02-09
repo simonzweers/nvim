@@ -18,7 +18,8 @@ return {
 				},
 			})
 
-			local surround = require("mini.surround").setup()
+			local surround = require("mini.surround")
+			surround.setup()
 		end,
 	},
 }
