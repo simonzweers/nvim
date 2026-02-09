@@ -1,6 +1,7 @@
 return {
 	{
 		"p00f/godbolt.nvim",
+		enabled = false,
 		event = "VeryLazy",
 		config = function()
 			require("godbolt").setup({
