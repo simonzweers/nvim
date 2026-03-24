@@ -17,7 +17,7 @@ return {
 			--------------------------------------------------------------------
 			-- TOGGLE: Enable/Disable linting
 			--------------------------------------------------------------------
-			local lint_enabled = true
+			local lint_enabled = false
 
 			local function toggle_lint()
 				lint_enabled = not lint_enabled
