@@ -2,24 +2,48 @@ return {
 	{
 		"mfussenegger/nvim-lint",
 		event = "VeryLazy",
-		opts = {},
+
 		config = function()
 			local lint = require("lint")
+
+			-- Configure linters
 			lint.linters_by_ft = {
 				markdown = { "vale" },
 				bash = { "shellcheck" },
 				sh = { "shellcheck" },
 				cpp = { "cpplint" },
 			}
-			vim.api.nvim_create_autocmd({ "BufEnter", "BufWritePost", "InsertLeave", "TextChanged" }, {
-				callback = function()
-					-- try_lint without arguments runs the linters defined in `linters_by_ft`
-					-- for the current filetype
-					lint.try_lint()
 
-					-- -- You can call `try_lint` with a linter name or a list of names to always
-					-- -- run specific linters, independent of the `linters_by_ft` configuration
-					-- require("lint").try_lint("cspell")
+			--------------------------------------------------------------------
+			-- TOGGLE: Enable/Disable linting
+			--------------------------------------------------------------------
+			local lint_enabled = true
+
+			local function toggle_lint()
+				lint_enabled = not lint_enabled
+
+				if lint_enabled then
+					vim.notify("nvim-lint: enabled", vim.log.levels.INFO)
+					lint.try_lint()
+				else
+					vim.notify("nvim-lint: disabled", vim.log.levels.WARN)
+					-- Clear diagnostics from all linters
+					vim.diagnostic.reset(nil, 0)
+				end
+			end
+
+			vim.keymap.set("n", "<leader>lt", toggle_lint, {
+				desc = "Toggle lint diagnostics",
+			})
+
+			--------------------------------------------------------------------
+			-- AUTOCMD: Run linting on save / leave insert / etc.
+			--------------------------------------------------------------------
+			vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave", "TextChanged" }, {
+				callback = function()
+					if lint_enabled then
+						lint.try_lint()
+					end
 				end,
 			})
 		end,
