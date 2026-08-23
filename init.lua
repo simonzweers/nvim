@@ -28,3 +28,4 @@ require("config.theme")
 require("config.autocmds")
 require("config.keys")
 require("config.lsp") -- Uncomment for using built-in lsp config
+require("config.syntax-highlighting") -- Uncomment for using built-in lsp config

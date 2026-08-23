@@ -1,7 +1,7 @@
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
-		event = "VeryLazy",
+		lazy = false,
 		build = ":TSUpdate",
 		config = function()
 			require("nvim-treesitter").install({
@@ -14,6 +14,8 @@ return {
 				"go",
 				"java",
 				"python",
+				"typescript",
+				"svelte",
 			})
 		end,
 	},

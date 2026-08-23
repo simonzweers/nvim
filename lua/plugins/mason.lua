@@ -21,7 +21,8 @@ return {
 				"cmake",
 				"bashls",
 				"zls",
-				"ts_ls"
+				"ts_ls",
+				"svelte",
 				-- "clang-format",
 				-- "shellcheck",
 			},
