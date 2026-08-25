@@ -66,8 +66,15 @@ local function on_attach(client, bufnr)
 			desc = "Rename symbol",
 		},
 		{ "<F3>", toggle_diagnostics, desc = "Toggle diagnostics" },
-		{ "<leader>chs", ":ClangdSwitchSourceHeader<CR>", desc = "Switch Source/Header" },
 	})
+
+	vim.keymap.set("n", "<leader>chs", function()
+		vim.lsp.buf.execute_command({
+			command = "clangd.switch_source_header",
+			arguments = {},
+			title = "",
+		})
+	end, { desc = "Switch between source and header" })
 
 	wk.add({
 		"<C-h>",

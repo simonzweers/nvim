@@ -1,16 +1,16 @@
 return {
 	{
 		"williamboman/mason.nvim",
-		event = 'VeryLazy',
+		event = "VeryLazy",
 		config = function()
 			require("mason").setup()
 			require("mason-lspconfig").setup()
-		end
+		end,
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
 		dependencies = { "williamboman/mason.nvim" },
-		event = 'VeryLazy',
+		event = "VeryLazy",
 		opts = {
 			ensure_installed = {
 				"lua_ls",
@@ -26,7 +26,7 @@ return {
 				-- "clang-format",
 				-- "shellcheck",
 			},
-		}
+		},
 	},
 	{
 		"jay-babu/mason-nvim-dap.nvim",
@@ -40,6 +40,6 @@ return {
 			ensure_installed = {
 				"codelldb",
 			},
-		}
+		},
 	},
 }
