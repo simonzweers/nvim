@@ -23,6 +23,7 @@ return {
 				"zls",
 				"ts_ls",
 				"svelte",
+				"stylua",
 				-- "clang-format",
 				-- "shellcheck",
 			},
