@@ -10,6 +10,10 @@ return {
 					cpp = { "clang_format" },
 					rust = { "rustfmt", lsp_format = "fallback" },
 					lua = { "stylua" },
+					svelte = { "prettier" },
+					javascript = { "prettier" },
+					typescript = { "prettier" },
+					css = { "prettier" },
 				},
 				formatters = {
 					clang_format = {
