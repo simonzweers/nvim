@@ -33,7 +33,16 @@ return {
 				enabled = false,
 				timeout = 3000,
 			},
-			picker = { enabled = true },
+			picker = {
+				enabled = true,
+				sources = {
+					grep = {
+						hidden = true,
+						ignore = true,
+						exclude = { ".git", ".vscode", "node_modules", "dist" },
+					},
+				},
+			},
 			quickfile = { enabled = true },
 			scope = { enabled = true },
 			scroll = { enabled = true },
