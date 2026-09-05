@@ -8,9 +8,24 @@ return {
 			-- VimTeX configuration goes here, e.g.
 			vim.g.vimtex_view_method = "zathura"
 			vim.g.vimtex_view_general_viewer = "okular"
-			vim.g.vimtex_latexmk_options =
-				"-pdf -shell-escape -verbose -file-line-error -synctex=1 -interaction=nonstopmode"
-			--vim.g.vimtex_view_general_options = "--unique file:@pdf\#src:@line@tex"
+			-- vim.g.vimtex_compiler_latexmk = "-pdf -shell-escape -file-line-error -synctex=1 -interaction=nonstopmode"
+
+			-- Compiler settings (modern latexmk flags)
+			vim.g.vimtex_compiler_latexmk = {
+				aux_dir = "",
+				out_dir = "",
+				callback = 1,
+				continuous = 1,
+				executable = "latexmk",
+				hooks = {},
+				options = {
+					"-verbose",
+					"-file-line-error",
+					"-synctex=1",
+					"-interaction=nonstopmode",
+					"-shell-escape",
+				},
+			} --vim.g.vimtex_view_general_options = "--unique file:@pdf\#src:@line@tex"
 		end,
 	},
 }
