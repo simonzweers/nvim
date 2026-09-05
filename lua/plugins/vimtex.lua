@@ -9,7 +9,8 @@ return {
 			vim.g.vimtex_view_method = "zathura"
 			vim.g.vimtex_view_general_viewer = "okular"
 			-- vim.g.vimtex_compiler_latexmk = "-pdf -shell-escape -file-line-error -synctex=1 -interaction=nonstopmode"
-
+			vim.g.vimtex_quickfix_enabled = 0 -- Disable quickfix list population
+			vim.g.vimtex_inline_errors = 1 -- Enable inline error display (virtual text)
 			-- Compiler settings (modern latexmk flags)
 			vim.g.vimtex_compiler_latexmk = {
 				aux_dir = "",
