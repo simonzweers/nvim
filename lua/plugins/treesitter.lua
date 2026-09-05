@@ -16,6 +16,7 @@ return {
 				"python",
 				"typescript",
 				"svelte",
+				"systemverilog",
 			})
 		end,
 	},

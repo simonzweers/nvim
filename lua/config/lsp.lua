@@ -117,9 +117,9 @@ end
 local cfg = vim.lsp.config
 
 vim.filetype.add({
-  extension = {
-    svelte = "svelte",
-  },
+	extension = {
+		svelte = "svelte",
+	},
 })
 
 vim.lsp.config["clangd"] = {
@@ -137,6 +137,7 @@ vim.lsp.config["gopls"] = { on_attach = on_attach }
 vim.lsp.config["bashls"] = { on_attach = on_attach }
 vim.lsp.config["ts_ls"] = { on_attach = on_attach }
 vim.lsp.config["svelte"] = { on_attach = on_attach }
+vim.lsp.config["svlangserver"] = { on_attach = on_attach }
 
 -- List of servers to start
 local servers = {
@@ -151,6 +152,7 @@ local servers = {
 	"bashls",
 	"ts_ls",
 	"svelte",
+	"svlangserver",
 }
 
 for _, server in ipairs(servers) do
