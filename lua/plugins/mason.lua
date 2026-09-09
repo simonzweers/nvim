@@ -24,6 +24,7 @@ return {
 				"ts_ls",
 				"svelte",
 				"stylua",
+				"texlab",
 				-- "clang-format",
 				-- "shellcheck",
 			},
