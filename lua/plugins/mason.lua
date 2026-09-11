@@ -25,6 +25,7 @@ return {
 				"svelte",
 				"stylua",
 				"texlab",
+				"verible",
 				-- "clang-format",
 				-- "shellcheck",
 			},
