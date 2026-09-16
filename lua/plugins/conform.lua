@@ -14,6 +14,7 @@ return {
 					javascript = { "prettier" },
 					typescript = { "prettier" },
 					css = { "prettier" },
+					systemverilog = { "verible-verilog-format" },
 				},
 				formatters = {
 					clang_format = {
