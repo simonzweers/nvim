@@ -14,11 +14,14 @@ return {
 					javascript = { "prettier" },
 					typescript = { "prettier" },
 					css = { "prettier" },
-					systemverilog = { "verible-verilog-format" },
+					systemverilog = { "verible" },
 				},
 				formatters = {
 					clang_format = {
 						prepend_args = { "--style=file:.clang-format" },
+					},
+					verible = {
+						prepend_args = { "--indentation_spaces=4" },
 					},
 				},
 			})
