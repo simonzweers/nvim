@@ -68,4 +68,12 @@ vim.keymap.set("n", "<leader>th?", function()
 	what_theme()
 end, {})
 
-set_theme(5)
+local hostname = vim.fn.hostname()
+
+-- print("hostname: " .. hostname)
+
+if hostname == "simon-pc-opensuse" then
+	vim.cmd(string.format("colorscheme %s", "gruvbox"))
+else
+	set_theme(5)
+end
