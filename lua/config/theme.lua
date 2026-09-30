@@ -68,6 +68,34 @@ vim.keymap.set("n", "<leader>th?", function()
 	what_theme()
 end, {})
 
+-- Give the gutter (line numbers, signs, folds) a background that differs from the
+-- editor, using the first theme-provided background that isn't the Normal one
+local function tint_gutter()
+	local normal_bg = vim.api.nvim_get_hl(0, { name = "Normal", link = false }).bg
+	local gutter_bg
+	for _, group in ipairs({ "SignColumn", "NormalFloat", "ColorColumn", "CursorLine", "StatusLine" }) do
+		local hl = vim.api.nvim_get_hl(0, { name = group, link = false })
+		local bg = hl.reverse and hl.fg or hl.bg
+		if bg and bg ~= normal_bg then
+			gutter_bg = bg
+			break
+		end
+	end
+	if not gutter_bg then
+		return
+	end
+	for _, group in ipairs({ "LineNr", "LineNrAbove", "LineNrBelow", "CursorLineNr", "SignColumn", "FoldColumn" }) do
+		local hl = vim.api.nvim_get_hl(0, { name = group, link = false })
+		hl.bg = gutter_bg
+		vim.api.nvim_set_hl(0, group, hl)
+	end
+end
+
+vim.api.nvim_create_autocmd("ColorScheme", {
+	group = vim.api.nvim_create_augroup("TintGutter", { clear = true }),
+	callback = tint_gutter,
+})
+
 local hostname = vim.fn.hostname()
 
 -- print("hostname: " .. hostname)
