@@ -99,7 +99,7 @@ local function on_attach(client, bufnr)
 	end
 
 	-- Document highlight
-	if client.supports_method("textDocument/documentHighlight") then
+	if client:supports_method("textDocument/documentHighlight") then
 		vim.api.nvim_create_autocmd("CursorMoved", {
 			buffer = bufnr,
 			callback = function()

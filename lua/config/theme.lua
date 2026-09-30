@@ -72,8 +72,8 @@ local hostname = vim.fn.hostname()
 
 -- print("hostname: " .. hostname)
 
-if hostname == "simon-pc-opensuse" then
-	vim.cmd(string.format("colorscheme %s", "gruvbox"))
-else
-	set_theme(5)
-end
+vim.cmd(string.format("colorscheme %s", "gruvbox"))
+-- if hostname == "simon-pc-opensuse" then
+-- else
+-- 	set_theme(5)
+-- end
