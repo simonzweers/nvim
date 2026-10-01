@@ -16,6 +16,7 @@ return {
 		config = function()
 			local cmp = require("cmp")
 			local cmp_select = { behavior = cmp.SelectBehavior.Select }
+			require("luasnip").config.set_config({ enable_autosnippets = true })
 			require("luasnip.loaders.from_vscode").lazy_load()
 			require("luasnip.loaders.from_lua").lazy_load({ paths = vim.fn.stdpath("config") .. "/luasnippets" })
 			local luasnip = require("luasnip")
