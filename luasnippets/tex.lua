@@ -36,4 +36,14 @@ table.insert(
 	})
 )
 
-return {}, autosnippets
+local snippets = {}
+table.insert(
+	snippets,
+	s({ trig = "circuit", "circuitikz (American)" }, {
+		t({ "\\begin{circuitikz}[american, scale=1]", "\t\\draw " }),
+		i(1, "cirucit-code"),
+		t({ "\t;", "\\end{circuitikz}" }),
+	})
+)
+
+return snippets, autosnippets
