@@ -1,3 +1,14 @@
+-- Prompt for (and override) the arguments of the selected configuration
+local function get_args(config)
+	local args = type(config.args) == "function" and (config.args() or {}) or config.args or {}
+	local args_str = type(args) == "table" and table.concat(args, " ") or args
+	config = vim.deepcopy(config)
+	config.args = function()
+		return require("dap.utils").splitstr(vim.fn.input("Run with args: ", args_str))
+	end
+	return config
+end
+
 return {
 	{
 		"rcarriga/nvim-dap-ui",
@@ -17,50 +28,54 @@ return {
 			dap.listeners.after.event_initialized["dapui_config"] = function()
 				dapui.open({})
 			end
-			dap.listeners.before.event_terminated["dapui_config"] = function()
-				dapui.close({})
-			end
-			dap.listeners.before.event_exited["dapui_config"] = function()
-				dapui.close({})
-			end
+			-- Keep the UI open when the debuggee exits so its output stays visible.
+			-- Close it manually with <leader>du.
 			dap.adapters.gdb = {
+				id = "gdb",
 				type = "executable",
 				command = "gdb",
-				args = { "--interpreter=dap", "--eval-command", "set print pretty on" },
+				args = { "--interpreter=dap", "--quiet" },
 			}
 			dap.configurations.cpp = {
 				{
-					name = "Launch",
+					name = "Run executable (GDB)",
 					type = "gdb",
 					request = "launch",
 					program = function()
-						return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+						local path = vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+						return (path and path ~= "") and path or dap.ABORT
 					end,
 					cwd = "${workspaceFolder}",
 					stopAtBeginningOfMainSubprogram = false,
 				},
 				{
-					name = "Select and attach to process",
+					name = "Run executable with arguments (GDB)",
 					type = "gdb",
-					request = "attach",
+					request = "launch",
+					-- This requires special handling of 'run_last', see
+					-- https://github.com/mfussenegger/nvim-dap/issues/1025#issuecomment-1695852355
 					program = function()
-						return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+						local path = vim.fn.input({
+							prompt = "Path to executable: ",
+							default = vim.fn.getcwd() .. "/",
+							completion = "file",
+						})
+
+						return (path and path ~= "") and path or dap.ABORT
 					end,
-					pid = function()
-						local name = vim.fn.input("Executable name (filter): ")
-						return require("dap.utils").pick_process({ filter = name })
+					args = function()
+						local args_str = vim.fn.input({
+							prompt = "Arguments: ",
+						})
+						return require("dap.utils").splitstr(args_str)
 					end,
 					cwd = "${workspaceFolder}",
 				},
 				{
-					name = "Attach to gdbserver :1234",
+					name = "Attach to process (GDB)",
 					type = "gdb",
 					request = "attach",
-					target = "localhost:1234",
-					program = function()
-						return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-					end,
-					cwd = "${workspaceFolder}",
+					pid = require("dap.utils").pick_process,
 				},
 			}
 			dap.configurations.c = dap.configurations.cpp
