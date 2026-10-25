@@ -36,6 +36,17 @@ table.insert(
 	})
 )
 
+table.insert(
+	autosnippets,
+	s({ trig = "//", dscr = "fraction macro", condition = in_mathzone }, {
+		t("\\frac{"),
+		i(1),
+		t("}{"),
+		i(2),
+		t("}"),
+	})
+)
+
 local snippets = {}
 table.insert(
 	snippets,
