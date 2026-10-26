@@ -35,4 +35,9 @@ return {
 		"Mofiqul/vscode.nvim",
 		lazy = true,
 	},
+	{
+		"kepano/flexoki-neovim",
+		name = "flexoki",
+		lazy = true,
+	},
 }
