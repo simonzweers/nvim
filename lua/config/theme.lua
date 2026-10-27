@@ -22,8 +22,6 @@ function set_theme(index)
 	theme_index = index
 	vim.cmd(string.format("colorscheme %s", themes[index]))
 	-- For transparency:
-	-- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-	-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 end
 
 function random_theme()
@@ -101,6 +99,10 @@ local hostname = vim.fn.hostname()
 -- print("hostname: " .. hostname)
 
 vim.cmd(string.format("colorscheme %s", "flexoki-dark"))
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
+vim.api.nvim_set_hl(0, "Pmenu", { bg = "none" })
 -- if hostname == "simon-pc-opensuse" then
 -- else
 -- 	set_theme(5)
